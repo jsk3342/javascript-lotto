@@ -6,7 +6,7 @@
 
 ### 🚨 구현 리스트
 
-- [ ] **구입 금액을 입력 받는다.** - 라이브러리 사용 View #insertMoney()
+- [o] **구입 금액을 입력 받는다.** - 라이브러리 사용 View #insertMoney()
 - [ ] **1장에 천원, 구입 금액에 해당하는 만큼 로또를 발행한다.** Lotto #makeUserTicket()
 - [ ] **1~45까지 중복되지 않는 6개의 숫자를 입력 받는다** - 라이브러리 사용 View #inputUserNumber()
 - [ ] **당첨 번호는 6개를 뽑고 보너스 번호 1개도 같이 뽑는다.** Lotto #setInitNumber()
