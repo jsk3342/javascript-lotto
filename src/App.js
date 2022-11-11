@@ -5,13 +5,16 @@ class App {
 
   play() { 
     this.insertMoney();
-    
+
   }
 
   insertMoney() {
       MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (userMoney) => {
         this.userTicketCount = this.makeUserTicket(userMoney);
-        this.setUserTicket(this.userTicketCount);
+        this.totalUserTicket = this.setUserTicket(this.userTicketCount);
+        this.totalUserTicket.forEach(userTickeNumber => {
+          MissionUtils.Console.print(userTickeNumber)
+        })
       })
   }
 
@@ -21,13 +24,13 @@ class App {
   }
 
   setUserTicket(userTicketCount) {
-  //티켓의 갯수만큼 로또 번호를 발생한다.
-  //로또는 길이가 6이며 1~45까지 중복되지 않는 6개의 숫자이다.
-  //먼저 하나의 배열을 만들고 반환한다.
+    const totalUserTicket = [];
     for (let makeTicket = 0; makeTicket < userTicketCount; makeTicket++){
-      const userTicket = MissionUtils.Random.pickUniqueNumbersInRange(1,45,6).sort((a,b) => a-b)
-      MissionUtils.Console.print(userTicket)
+      const userTicket = MissionUtils.Random.pickUniqueNumbersInRange(1, 45, 6).sort((a,b) => a-b)
+      totalUserTicket.push(userTicket)
     }
+
+    return totalUserTicket;
   }
 
   setRank() {
