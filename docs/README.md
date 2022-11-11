@@ -6,16 +6,16 @@
 
 ### 🚨 구현 리스트
 
-- [o] **구입 금액을 입력 받는다.** - 라이브러리 사용 View #insertMoney()
+- [o] **구입 금액을 입력 받는다.** - 라이브러리 사용 App #insertMoney()
 - [o] **1장에 천원, 구입 금액에 해당하는 만큼 로또를 발행한다.** Lotto #makeUserTicket()
 - [ ] **구매 티켓 수 만큼 로또 생성** -  Lotto #setUserTicket()
-- [ ] **1~45까지 중복되지 않는 6개의 숫자를 입력 받는다** - 라이브러리 사용 View #inputUserNumber()
+- [ ] **1~45까지 중복되지 않는 6개의 숫자를 입력 받는다** - 라이브러리 사용 App #inputUserNumber()
 - [ ] **당첨 번호는 6개를 뽑고 보너스 번호 1개도 같이 뽑는다.** Lotto #setInitNumber()
 - [ ] **일치하는 갯수에 따라 등수를 부여한다.** App #setRank
-  - [ ] **각각 등수의 조건에 따라 보여줄 메시지를 구현한다.** #setRank #rankMessege()
-  - [ ] **각각 등수의 조건에 따라 지급할 금액를 구현한다.** #setRank #rankPrice()
+  - [ ] **각각 등수의 조건에 따라 보여줄 메시지를 구현한다.** App #setRank #rankMessege()
+  - [ ] **각각 등수의 조건에 따라 지급할 금액를 구현한다.** App #setRank #rankPrice()
 - [ ] **사용자가 구매한 번호와 당첨 번호를 비교하여 내역 및 수익률 구하기** App #setResult()
-- [ ] **비교하여 내역 및 수익률을 출력하고 종료한다.** view #showResult()
+- [ ] **비교하여 내역 및 수익률을 출력하고 종료한다.** App #showResult()
 - [ ] **잘못된 값 입력 시 예외처리** Lotto #validate
 
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
