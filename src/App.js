@@ -10,6 +10,7 @@ class App {
 
   insertMoney() {
     MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (userMoney) => {
+        this.validate(userMoney);
         this.userInputMoney = userMoney;
         this.userTicketCount = this.makeUserTicket(userMoney);
         this.totalUserTicket = this.setUserTicket(this.userTicketCount);
@@ -40,6 +41,7 @@ class App {
     MissionUtils.Console.readLine('당첨 번호를 입력해 주세요.', userInputNumber => {
       const checkList = userInputNumber.split(",").map(number => +number)
       MissionUtils.Console.readLine("보너스 번호를 입력해 주세요.", bonusNumber => {
+        this.validate(bonusNumber)
         checkList.push(Number(bonusNumber))
         this.makeRankData(totalUserTicket, checkList)
       })
@@ -129,14 +131,10 @@ class App {
     return messegeTemplate
   }
 
-  setResult() {
-    
-  }
-
-
-
-  showResult() {
-
+  validate(numbers) {
+    if (isNaN(numbers)) {
+      throw new Error("[ERROR] 숫자만 입력 가능합니다.");
+    }
   }
 }
 
