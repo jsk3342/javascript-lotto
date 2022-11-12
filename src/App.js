@@ -67,12 +67,12 @@ class App {
       // console.log(bonusCount, "보나스 몇점?")
     })
 
-    this.rankMessege(resultList)
+    this.saveRank(resultList)
   }
 
-  rankMessege(resultList) {
+  saveRank(resultList) {
     const rankList = [0, 0, 0, 0, 0, 0];
-    let secondRank = 0;
+    let secondRank = false
     resultList.forEach(result => {
       let [point, bonusPoint] = result;
       if (point === 0) {
@@ -80,7 +80,7 @@ class App {
       }
 
       if (point === 5 && bonusPoint === 1) {
-        secondRank++;
+        secondRank = true;
         return;
       }
       rankList[point - 1]++;
