@@ -10,7 +10,7 @@
 - [o] **1장에 천원, 구입 금액에 해당하는 만큼 로또를 발행한다.** Lotto #makeUserTicket()
 - [o] **금액 만큼 티켓 수 저장** -  Lotto #makeUserTicket()
 - [o] **1~45까지 중복되지 않는 6개의 숫자를 티켓 수 만큼 생성** - 라이브러리 사용 App #setUserTicket()
-- [ ] **당첨 번호는 6개를 뽑고 보너스 번호 1개도 같이 뽑는다.** Lotto #setInitNumber()
+- [o] **당첨 번호는 6개를 뽑고 보너스 번호 1개도 같이 뽑는다.** App #inputUserNumber()
 - [ ] **일치하는 갯수에 따라 등수를 부여한다.** App #setRank
   - [ ] **각각 등수의 조건에 따라 보여줄 메시지를 구현한다.** App #setRank #rankMessege()
   - [ ] **각각 등수의 조건에 따라 지급할 금액를 구현한다.** App #setRank #rankPrice()
