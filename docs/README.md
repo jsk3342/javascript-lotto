@@ -13,11 +13,10 @@
 - [o] **당첨 번호는 6개를 뽑고 보너스 번호 1개도 같이 뽑는다.** App #inputUserNumber()
 - [o] **일치하는 갯수에 따라 등수를 부여한다.** App #makeRankData
   - [o] **각각 등수의 조건에 따라 등수를 저장한다.** App #makeRankData #saveRank()
-  - [ ] **각각 등수의 조건에 따라 지급할 금액를 구현한다.** App #makeRankData #rankPrice()
-  - [ ] **각각 등수의 조건에 따라 보여줄 메시지를 구현한다.** App #makeRankData #rankMessege()
-- [ ] **사용자가 구매한 번호와 당첨 번호를 비교하여 내역 및 수익률 구하기** App #setResult()
-- [ ] **비교하여 내역 및 수익률을 출력하고 종료한다.** App #showResult()
-- [ ] **잘못된 값 입력 시 예외처리** Lotto #validate
+  - [o] **각각 등수의 조건에 따라 보여줄 메시지를 구현한다.** App #makeRankData #rankMessege()
+  - [o] **각각 등수의 조건에 따라 지급할 금액를 구현한다.** App #makeRankData #rankPrice()
+- [o] **사용자가 구매한 번호와 당첨 번호를 비교하여 내역 및 수익률 구하기** App #setResult()
+- [o] **잘못된 값 입력 시 예외처리** Lotto #validate
 
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
 
