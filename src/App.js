@@ -1,11 +1,8 @@
 const MissionUtils = require("@woowacourse/mission-utils");
 
 class App {
-  #userTicket
-
   play() { 
     this.insertMoney();
-
   }
 
   insertMoney() {
@@ -15,6 +12,7 @@ class App {
         this.totalUserTicket.forEach(userTickeNumber => {
           MissionUtils.Console.print(userTickeNumber)
         })
+        this.inputUserNumber();
       })
   }
 
@@ -33,6 +31,16 @@ class App {
     return totalUserTicket;
   }
 
+  inputUserNumber() {
+    MissionUtils.Console.readLine('당첨 번호를 입력해 주세요.', userInputNumber => {
+      const checkList = userInputNumber.split(",").map(number => +number)
+      MissionUtils.Console.readLine("보너스 번호를 입력해 주세요.", bonusNumber => {
+        checkList.push(Number(bonusNumber))
+        MissionUtils.Console.print(checkList)
+      })
+    })
+  }
+
   setRank() {
 
   }
@@ -49,9 +57,7 @@ class App {
     
   }
 
-  inputUserNumber() {
 
-  }
 
   showResult() {
 
