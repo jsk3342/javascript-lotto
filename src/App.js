@@ -12,7 +12,8 @@ class App {
         this.totalUserTicket.forEach(userTickeNumber => {
           MissionUtils.Console.print(userTickeNumber)
         })
-        this.inputUserNumber();
+        //totalUserTicket과 userTickeNumber를 비교하면서 몇 개 일치 했는지 확인하기
+        this.inputUserNumber(this.totalUserTicket);
       })
   }
 
@@ -31,18 +32,38 @@ class App {
     return totalUserTicket;
   }
 
-  inputUserNumber() {
+  inputUserNumber(totalUserTicket) {
     MissionUtils.Console.readLine('당첨 번호를 입력해 주세요.', userInputNumber => {
       const checkList = userInputNumber.split(",").map(number => +number)
       MissionUtils.Console.readLine("보너스 번호를 입력해 주세요.", bonusNumber => {
         checkList.push(Number(bonusNumber))
-        MissionUtils.Console.print(checkList)
+        this.setRank(totalUserTicket, checkList)
       })
     })
   }
 
-  setRank() {
-
+  setRank(totalUserTicket, checkList) {
+    let bonusNumber = checkList.pop();
+    // console.log('totalUserTicket', totalUserTicket)
+    // console.log('checkList', checkList)
+    // console.log("보너스", bonusNumber)
+    totalUserTicket.forEach(userTicket => {
+      let target = 0;
+      let count = 0;
+      let bonusCount = 0;
+      for (let i = 0; i < 6; i++) {
+        target = checkList[i]
+        if (userTicket.includes(target)) {
+          count++;
+        }
+      }
+      if (userTicket.includes(bonusNumber)) {
+          bonusCount++;
+        }
+      // console.log(userTicket, '유저 티켓')
+      // console.log(count, '몇개 맞췄는지?')
+      // console.log(bonusCount, "보나스 몇점?")
+    })
   }
 
   rankMessege() {
