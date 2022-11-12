@@ -13,11 +13,11 @@ class App {
         this.validate(userMoney);
         this.userInputMoney = userMoney;
         this.userTicketCount = this.makeUserTicket(userMoney);
+        MissionUtils.Console.print(`${this.userTicketCount}개를 구매했습니다.`);
         this.totalUserTicket = this.setUserTicket(this.userTicketCount);
         this.totalUserTicket.forEach(userTickeNumber => {
-          MissionUtils.Console.print(userTickeNumber)
+          MissionUtils.Console.print(`[${userTickeNumber.join(", ")}]`)
         })
-        //totalUserTicket과 userTickeNumber를 비교하면서 몇 개 일치 했는지 확인하기
         this.inputUserNumber(this.totalUserTicket);
       })
   }
@@ -115,7 +115,7 @@ class App {
   }
 
   rankMessege(rankList, secondRank) {
-    let messegeTemplate = `당첨 통계\n---\n`;
+    let messegeTemplate;
     const prizeTable = ['(30,000,000원)',0,0,'(5,000원)','(50,000원)','(1,500,000원)', '(2,000,000,000원)']
     
     for (let i = 3; i < 7; i++) {
