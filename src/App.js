@@ -86,12 +86,19 @@ class App {
       rankList[point - 1]++;
     });
 
-    console.log(rankList, secondRank)
-    
+    this.rankPrice(rankList, secondRank);
   }
 
-  rankPrice() {
+  rankPrice(rankList, secondRank) {
+    let messegeTemplate = ``;
+    const prizeTable = ['(30,000,000원)',0,0,'(5,000원)','(50,000원)','(1,500,000원)', '(2,000,000,000원)']
+    for (let i = 3; i < 7; i++) {
+      messegeTemplate += `${i}개 일치 ${prizeTable[i]} - ${rankList[i - 1]}개 \n`
+      if (i === 5 && secondRank === true)
+        messegeTemplate += `${i}개 일치, 보너스 볼 일치 ${prizeTable[0]} - ${rankList[i - 1]}개 \n`
+    }
 
+    console.log(messegeTemplate)
   }
 
   setResult() {
