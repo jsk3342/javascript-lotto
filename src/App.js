@@ -72,7 +72,7 @@ class App {
 
   saveRank(resultList) {
     const rankList = [0, 0, 0, 0, 0, 0];
-    let secondRank = false
+    let secondRank = 0;
     resultList.forEach(result => {
       let [point, bonusPoint] = result;
       if (point === 0) {
@@ -80,7 +80,7 @@ class App {
       }
 
       if (point === 5 && bonusPoint === 1) {
-        secondRank = true;
+        secondRank++;
         return;
       }
       rankList[point - 1]++;
@@ -90,15 +90,24 @@ class App {
   }
 
   rankPrice(rankList, secondRank) {
+  let messegeTemplate = this.rankMessege(rankList, secondRank)
+    
+
+  }
+
+  rankMessege(rankList, secondRank) {
     let messegeTemplate = ``;
     const prizeTable = ['(30,000,000원)',0,0,'(5,000원)','(50,000원)','(1,500,000원)', '(2,000,000,000원)']
+    
     for (let i = 3; i < 7; i++) {
       messegeTemplate += `${i}개 일치 ${prizeTable[i]} - ${rankList[i - 1]}개 \n`
-      if (i === 5 && secondRank === true)
-        messegeTemplate += `${i}개 일치, 보너스 볼 일치 ${prizeTable[0]} - ${rankList[i - 1]}개 \n`
+      if (i === 5 && secondRank !== 0) {
+        messegeTemplate += `${i}개 일치, 보너스 볼 일치 ${prizeTable[0]} - ${secondRank}개 \n`
+      }
+      if (i === 5 && secondRank === 0) {
+        messegeTemplate += `${i}개 일치, 보너스 볼 일치 ${prizeTable[0]} - ${secondRank}개 \n`
+      }
     }
-
-    console.log(messegeTemplate)
   }
 
   setResult() {
