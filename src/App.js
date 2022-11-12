@@ -37,37 +37,57 @@ class App {
       const checkList = userInputNumber.split(",").map(number => +number)
       MissionUtils.Console.readLine("보너스 번호를 입력해 주세요.", bonusNumber => {
         checkList.push(Number(bonusNumber))
-        this.setRank(totalUserTicket, checkList)
+        this.makeRankData(totalUserTicket, checkList)
       })
     })
   }
 
-  setRank(totalUserTicket, checkList) {
+  makeRankData(totalUserTicket, checkList) {
     let bonusNumber = checkList.pop();
     // console.log('totalUserTicket', totalUserTicket)
     // console.log('checkList', checkList)
     // console.log("보너스", bonusNumber)
+    const resultList = [];
     totalUserTicket.forEach(userTicket => {
       let target = 0;
-      let count = 0;
-      let bonusCount = 0;
+      let point = 0;
+      let bonusPoint = 0;
       for (let i = 0; i < 6; i++) {
         target = checkList[i]
         if (userTicket.includes(target)) {
-          count++;
+          point++;
         }
       }
       if (userTicket.includes(bonusNumber)) {
-          bonusCount++;
-        }
+          bonusPoint++;
+      }
+      resultList.push([point,bonusPoint])
       // console.log(userTicket, '유저 티켓')
       // console.log(count, '몇개 맞췄는지?')
       // console.log(bonusCount, "보나스 몇점?")
     })
+
+    this.rankMessege(resultList)
   }
 
-  rankMessege() {
+  rankMessege(resultList) {
+    const rankList = [0, 0, 0, 0, 0, 0];
+    let secondRank = 0;
+    resultList.forEach(result => {
+      let [point, bonusPoint] = result;
+      if (point === 0) {
+        return;
+      }
 
+      if (point === 5 && bonusPoint === 1) {
+        secondRank++;
+        return;
+      }
+      rankList[point - 1]++;
+    });
+
+    console.log(rankList, secondRank)
+    
   }
 
   rankPrice() {
