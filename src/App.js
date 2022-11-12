@@ -1,12 +1,16 @@
 const MissionUtils = require("@woowacourse/mission-utils");
 
 class App {
+  constructor() {
+    this.userInputMoney;
+  }
   play() { 
     this.insertMoney();
   }
 
   insertMoney() {
-      MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (userMoney) => {
+    MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (userMoney) => {
+        this.userInputMoney = userMoney;
         this.userTicketCount = this.makeUserTicket(userMoney);
         this.totalUserTicket = this.setUserTicket(this.userTicketCount);
         this.totalUserTicket.forEach(userTickeNumber => {
@@ -90,13 +94,26 @@ class App {
   }
 
   rankPrice(rankList, secondRank) {
-  let messegeTemplate = this.rankMessege(rankList, secondRank)
+    let messegeTemplate = this.rankMessege(rankList, secondRank)
+    let userMoney = this.userInputMoney
+    let earnedMoney = 0;
+    const prizeTable = [30000000,0,0,5000,50000,1500000, 2000000000]
     
+    for (let i = 3; i < 7; i++) {
+      earnedMoney += prizeTable[i] * rankList[i - 1]
+      if (i === 5 && secondRank !== 0) {
+        earnedMoney += prizeTable[0] * secondRank
+      }
+    }
+    const revenue = earnedMoney / userMoney * 100
+    messegeTemplate += `총 수익률은 ${revenue}%입니다.`
 
+    MissionUtils.Console.print(messegeTemplate);
+    MissionUtils.Console.close();
   }
 
   rankMessege(rankList, secondRank) {
-    let messegeTemplate = ``;
+    let messegeTemplate = `당첨 통계\n---\n`;
     const prizeTable = ['(30,000,000원)',0,0,'(5,000원)','(50,000원)','(1,500,000원)', '(2,000,000,000원)']
     
     for (let i = 3; i < 7; i++) {
@@ -108,6 +125,8 @@ class App {
         messegeTemplate += `${i}개 일치, 보너스 볼 일치 ${prizeTable[0]} - ${secondRank}개 \n`
       }
     }
+
+    return messegeTemplate
   }
 
   setResult() {
