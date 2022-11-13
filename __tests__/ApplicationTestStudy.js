@@ -2,15 +2,6 @@ const App = require("../src/App");
 const MissionUtils = require("@woowacourse/mission-utils");
 
 const mockQuestions = (answers) => {
-  MissionUtils.Console.readLine = jest.fn();
-  answers.reduce((acc, input) => {
-    return acc.mockImplementationOnce((question, callback) => {
-      callback(input);
-    });
-  }, MissionUtils.Console.readLine);
-};
-
-const mockQuestions = (answers) => {
   //유저의 답변들이 배열로 들어옴
   MissionUtils.Console.readLine = jest.fn(); //readLine에 목함수를 할당
   answers.reduce((acc, input) => {
@@ -22,31 +13,27 @@ const mockQuestions = (answers) => {
   }, MissionUtils.Console.readLine); //처음 값은 목함수
 };
 
-["8000", "1,2,3,4,5,6", "7"].reduce((jest.fn(), "8000") => {
-  //answer 초기값과 다음값을 받고
-  return jest.fn().mockImplementationOnce((question, callback) => {
-    //리턴함 mockImplementationOnce는 호출 될 때 마다 값이 달라지게 구현 가능 질문과 콜백을 받아서
-    callback(input); //콜백에 다음 값을 다시 인풋을 넣고 실행
-  });
-}, MissionUtils.Console.readLine); //처음 값은 목함수
+// ["8000", "1,2,3,4,5,6", "7"].reduce((jest.fn(), "8000") => {
+//   //answer 초기값과 다음값을 받고
+//   return jest.fn().mockImplementationOnce((question, callback) => {
+//     //리턴함 mockImplementationOnce는 호출 될 때 마다 값이 달라지게 구현 가능 질문과 콜백을 받아서
+//     callback(input); //콜백에 다음 값을 다시 인풋을 넣고 실행
+//   });
+// }, MissionUtils.Console.readLine); //처음 값은 목함수
 
 //아직까지 무슨말인지 모르겠다 일단 다음것도 진행해보면서 이해해보기
 
-const mockRandoms = (numbers) => { //랜덤 함수 구현?
+const mockRandoms = (numbers) => {
+  //랜덤 함수 구현?
   MissionUtils.Random.pickUniqueNumbersInRange = jest.fn(); //랜덤 숫자 추출 함수에 할당
-  numbers.reduce((acc, number) => {  //배열로 들어오면 첫 값은 jest.fn()에 더하기 시작 
+  numbers.reduce((acc, number) => {
+    //배열로 들어오면 첫 값은 jest.fn()에 더하기 시작
     return acc.mockReturnValueOnce(number); //하나씩 값을 리턴
   }, MissionUtils.Random.pickUniqueNumbersInRange);
 };
 
-const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickUniqueNumbersInRange = jest.fn();
-  numbers.reduce((acc, number) => {
-
-  })
-}
-
 const getLogSpy = () => {
+  // 모킹 추적하고 초기화
   const logSpy = jest.spyOn(MissionUtils.Console, "print");
   logSpy.mockClear();
   return logSpy;
