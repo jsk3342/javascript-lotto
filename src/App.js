@@ -1,4 +1,5 @@
 const MissionUtils = require("@woowacourse/mission-utils");
+const Lotto = require("./Lotto");
 
 class App {
   constructor() {
@@ -35,6 +36,7 @@ class App {
         45,
         6
       ).sort((a, b) => a - b);
+      new Lotto(userTicket);
       totalUserTicket.push(userTicket);
     }
 
@@ -119,7 +121,7 @@ class App {
   }
 
   rankMessege(rankList, secondRank) {
-    let messegeTemplate;
+    let messegeTemplate = "";
     const prizeTable = [
       "(30,000,000원)",
       0,
