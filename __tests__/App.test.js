@@ -3,7 +3,7 @@ const MissionUtils = require("@woowacourse/mission-utils");
 
 const app = new App();
 
-describe("앱 클래스 테스트", () => {
+describe("앱 클래스 테스트 (makeUserTicket)", () => {
   test("금액을 입력 받으면 티켓 수를 출력", () => {
     expect(app.makeUserTicket(4000)).toBe(4);
   });
