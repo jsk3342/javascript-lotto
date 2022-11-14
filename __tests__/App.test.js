@@ -8,11 +8,11 @@ describe("앱 클래스 테스트", () => {
     expect(app.makeUserTicket(4000)).toBe(4);
   });
 
-  test("입력 받은 수 만큼 티켓 생성", () => {
-    const count = 3;
-    const userTickets = app.setUserTicket(count);
-    userTickets.forEach((ticket) => {
-      ticket;
+  test("입력 받은 수 만큼 티켓 생성 (setUserTicket)", () => {
+    const mock = jest.fn();
+    app.setUserTicket(3).forEach(() => {
+      mock();
     });
+    expect(mock).toHaveBeenCalledTimes(3);
   });
 });
